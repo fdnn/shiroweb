@@ -19,30 +19,30 @@
    - Subject：主体，代表了当前“用户”，这个用户不一定是一个具体的人，与当前应用交互的任何东西都是Subject，如网络爬虫，机器人等；即一个抽象概念；所有Subject都绑定到SecurityManager，与Subject的所有交互都会委托给SecurityManager；可以把Subject认为是一个门面；SecurityManager才是实际的执行者
    - SecurityManager：安全管理器；即所有与安全有关的操作都会与SecurityManager交互；且它管理着所有Subject；可以看出它是Shiro的核心，它负责与后边介绍的其他组件进行交互，如果学习过SpringMVC，你可以把它看成DispatcherServlet前端控制器
    - Realms：域，Shiro从从Realm获取安全数据（如用户、角色、权限），就是说SecurityManager要验证用户身份，那么它需要从Realm获取相应的用户进行比较以确定用户身份是否合法；也需要从Realm得到用户相应的角色/权限进行验证用户是否能进行操作；可以把Realm看成DataSource，即安全数据源
-- shiro认证和授权的基本流程</br>
-1.应用代码通过 Subject 来进行认证和授权，而 Subject 又委托给 SecurityManager；
-2.我们需要给 Shiro 的 SecurityManager注入 Realm，从而让 SecurityManager能得到合法的用户及其权限进行判断。
+- shiro认证和授权的基本流程
+1. 应用代码通过 Subject 来进行认证和授权，而 Subject 又委托给 SecurityManager；
+2. 我们需要给 Shiro 的 SecurityManager注入 Realm，从而让 SecurityManager能得到合法的用户及其权限进行判断。
 
 ## 3. Shiro认证/授权
-1.创建SecurityManager
-2.主体提交认证
-3.SecurityManager认证
-4.Authenticator认证
-5.Realm认证/Realm获取角色权限数据
+1. 创建SecurityManager
+2. 主体提交认证
+3. SecurityManager认证
+4. Authenticator认证
+5. Realm认证/Realm获取角色权限数据
 
 ## 4. Shiro Realm
 - 内置Realm
    - IniRealm
    - JdbcRealm
-- 自定义Realm
+- 自定义Realm<\br>
 public class ShiroRealm extends AuthorizingRealm{}
 
-1、ShiroRealm父类AuthorizingRealm将获取Subject相关信息分成两步：
+1. ShiroRealm父类AuthorizingRealm将获取Subject相关信息分成两步：
 获取身份验证信息（doGetAuthenticationInfo）及授权信息（doGetAuthorizationInfo）；
 
-2、doGetAuthenticationInfo获取身份验证相关信息：首先根据传入的用户名获取User信息；然后如果user为空，那么抛出没找到帐号异常UnknownAccountException；最后生成AuthenticationInfo信息，交给间接父类AuthenticatingRealm使用CredentialsMatcher进行判断密码是否匹配，如果不匹配将抛出密码错误异常IncorrectCredentialsException；另外如果密码重试此处太多将抛出超出重试次数异常ExcessiveAttemptsException；在组装SimpleAuthenticationInfo信息时，需要传入：身份信息（用户名）、凭据（密文密码）、盐（username+salt），CredentialsMatcher使用盐加密传入的明文密码和此处的密文密码进行匹配。
+2. doGetAuthenticationInfo获取身份验证相关信息：首先根据传入的用户名获取User信息；然后如果user为空，那么抛出没找到帐号异常UnknownAccountException；最后生成AuthenticationInfo信息，交给间接父类AuthenticatingRealm使用CredentialsMatcher进行判断密码是否匹配，如果不匹配将抛出密码错误异常IncorrectCredentialsException；另外如果密码重试此处太多将抛出超出重试次数异常ExcessiveAttemptsException；在组装SimpleAuthenticationInfo信息时，需要传入：身份信息（用户名）、凭据（密文密码）、盐（username+salt），CredentialsMatcher使用盐加密传入的明文密码和此处的密文密码进行匹配。
 
-3、doGetAuthorizationInfo获取授权信息：PrincipalCollection是一个身份集合，因为我们现在就一个Realm，所以直接调用getPrimaryPrincipal得到之前传入的用户名即可；然后根据用户名调用UserDao接口获取角色及权限信息。
+3. doGetAuthorizationInfo获取授权信息：PrincipalCollection是一个身份集合，因为我们现在就一个Realm，所以直接调用getPrimaryPrincipal得到之前传入的用户名即可；然后根据用户名调用UserDao接口获取角色及权限信息。
 
 
 ## 5.Shiro JSTL标签
