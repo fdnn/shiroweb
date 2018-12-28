@@ -50,7 +50,7 @@
 	<label>用户身份验证已通过</label> <br>
 </shiro:authenticated>
 
-- <shiro:guest> <br>
+- <shiro:guest > <br>
 	<label>您当前是游客</label> <br>
 </shiro:guest>
 
@@ -74,22 +74,22 @@
 	<label>这个用户不拥有admin的角色</label> <br>
 </shiro:lacksRole>
 
-- <shiro:notAuthenticated> <br>
+- <shiro:notAuthenticated > <br>
 	<label>用户身份验证没有通过（包括通过记住我（remember me）登录的） </label> <br>
 </shiro:notAuthenticated>
 
 - <shiro:principal /> <br>
-<!--表示用户的身份--> <br>
-<!--取值取的是你登录的时候，在Realm 实现类中的new SimpleAuthenticationInfo(第一个参数,....) 放的第一个参数--> <br>
-<!--如果第一个放的是username或者是一个值 ，那么就可以直接用-->
+表示用户的身份 <br>
+取值取的是你登录的时候，在Realm 实现类中的new SimpleAuthenticationInfo(第一个参数,....) 放的第一个参数 <br>
+如果第一个放的是username或者是一个值 ，那么就可以直接用
 
-- <shiro:principal property="username"/> <br>
-<!--如果第一个参数放的是对象，比如放User 对象。那么如果要取其中某一个值，可以通过property属性来指定-->
+- <shiro:principal property="username" /> <br>
+如果第一个参数放的是对象，比如放User 对象。那么如果要取其中某一个值，可以通过property属性来指定
 
 - <shiro:user > <br>
 	<label>欢迎[<shiro:principal/>]</label> <br>
 </shiro:user> <br>
-<!--只有已经登录（包含通过记住我（remember me）登录的）的用户才可以看到标签内的内容；一般和标签shiro:principal一起用，来做显示用户的名称-->
+只有已经登录（包含通过记住我（remember me）登录的）的用户才可以看到标签内的内容；一般和标签shiro:principal一起用，来做显示用户的名称
 
 ## 6. Shiro 注解式授权
 - @RequiresAuthentication <br>
