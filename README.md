@@ -92,19 +92,19 @@
 <!--只有已经登录（包含通过记住我（remember me）登录的）的用户才可以看到标签内的内容；一般和标签shiro:principal一起用，来做显示用户的名称-->
 
 ## 6. Shiro 注解式授权
-- @RequiresAuthentication<\br>
+- @RequiresAuthentication <br>
 <** 要求当前 Subject 已经在当前的 session 中被验证通过才能被访问或调用。*/>
 
-- @RequiresGuest<\br>
+- @RequiresGuest <br>
 <** 要求当前的 Subject 是一个"guest"，也就是说，他们必须是在之前的 session 中没有被验证或被记住才能被访问或调用。*/>
 
-- @RequiresRoles("user")<\br>
+- @RequiresRoles("user") <br>
 <** 要求当前的 Subject 拥有所有指定的角色。如果他们没有，则该方法将不会被执行，而且 AuthorizationException 异常将会被抛出。*/>
 
-- @RequiresPermissions("user:add")<\br>
+- @RequiresPermissions("user:add") <br>
 <** 要求当前的 Subject 被允许一个或多个权限，以便执行注解的方法。*/>
 
-- @RequiresUser<\br>
+- @RequiresUser <br>
 <** 要求当前的 Subject 是一个应用程序用户才能被注解的类/实例/方法访问或调用。一个“应用程序用户”被定义为一个拥有已知身份，或在当前 session 中由于通过验证被确认，或者在之前 session 中的'RememberMe'服务被记住。*/>
 
 
