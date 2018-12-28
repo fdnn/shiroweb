@@ -34,8 +34,8 @@
 - 内置Realm
    - IniRealm
    - JdbcRealm
-- 自定义Realm<\br>
-public class ShiroRealm extends AuthorizingRealm{}
+- 自定义Realm
+ public class ShiroRealm extends AuthorizingRealm{}
 
 1. ShiroRealm父类AuthorizingRealm将获取Subject相关信息分成两步：
 获取身份验证信息（doGetAuthenticationInfo）及授权信息（doGetAuthorizationInfo）；
