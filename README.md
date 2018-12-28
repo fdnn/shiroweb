@@ -46,49 +46,49 @@
 
 
 ## 5.Shiro JSTL标签
-- <shiro:authenticated>
-	<label>用户身份验证已通过</label>
+- <shiro:authenticated> <br>
+	<label>用户身份验证已通过</label> <br>
 </shiro:authenticated>
 
-- <shiro:guest>
-	<label>您当前是游客</label>
+- <shiro:guest> <br>
+	<label>您当前是游客</label> <br>
 </shiro:guest>
 
-- <shiro:hasAnyRoles name="admin,user">
-	<label>这是拥有admin或者是user角色的用户</label>
+- <shiro:hasAnyRoles name="admin,user"> <br>
+	<label>这是拥有admin或者是user角色的用户</label> <br>
 </shiro:hasAnyRoles>
 
-- <shiro:hasPermission name="admin:add">
-	<label>这个用户拥有admin:add的权限</label>
+- <shiro:hasPermission name="admin:add"> <br>
+	<label>这个用户拥有admin:add的权限</label> <br>
 </shiro:hasPermission>
 
-- <shiro:hasRole name="admin">
-	<label>这个用户拥有的角色是admin</label>
+- <shiro:hasRole name="admin"> <br>
+	<label>这个用户拥有的角色是admin</label> <br>
 </shiro:hasRole>
 
-- <shiro:lacksPermission name="admin:delete">
-	<label>这个用户不拥有admin:delete的权限</label>
+- <shiro:lacksPermission name="admin:delete"> <br>
+	<label>这个用户不拥有admin:delete的权限</label> <br>
 </shiro:lacksPermission>
 
-- <shiro:lacksRole name="admin">
-	<label>这个用户不拥有admin的角色</label>
+- <shiro:lacksRole name="admin"> <br>
+	<label>这个用户不拥有admin的角色</label> <br>
 </shiro:lacksRole>
 
-- <shiro:notAuthenticated>
-	<label>用户身份验证没有通过（包括通过记住我（remember me）登录的） </label>
+- <shiro:notAuthenticated> <br>
+	<label>用户身份验证没有通过（包括通过记住我（remember me）登录的） </label> <br>
 </shiro:notAuthenticated>
 
-- <shiro:principal/>
-<!--表示用户的身份-->
-<!--取值取的是你登录的时候，在Realm 实现类中的new SimpleAuthenticationInfo(第一个参数,....) 放的第一个参数-->
+- <shiro:principal/> <br>
+<!--表示用户的身份--> <br>
+<!--取值取的是你登录的时候，在Realm 实现类中的new SimpleAuthenticationInfo(第一个参数,....) 放的第一个参数--> <br>
 <!--如果第一个放的是username或者是一个值 ，那么就可以直接用-->
 
-- <shiro:principal property="username"/>
+- <shiro:principal property="username"/> <br>
 <!--如果第一个参数放的是对象，比如放User 对象。那么如果要取其中某一个值，可以通过property属性来指定-->
 
-- <shiro:user>
-	<label>欢迎[<shiro:principal/>]</label>
-</shiro:user>
+- <shiro:user> <br>
+	<label>欢迎[<shiro:principal/>]</label> <br>
+</shiro:user> <br>
 <!--只有已经登录（包含通过记住我（remember me）登录的）的用户才可以看到标签内的内容；一般和标签shiro:principal一起用，来做显示用户的名称-->
 
 ## 6. Shiro 注解式授权
